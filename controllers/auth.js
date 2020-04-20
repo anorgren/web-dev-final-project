@@ -43,10 +43,32 @@ exports.signin = (req, res) => {
 
 exports.signout = (req, res) => {
     res.clearCookie('t');
-    return res.status(200).json({message: "Successfully signed out"})
+    return res.status(200).json({message: "Successfully signed out."})
 };
 
+// Any signed in user can access any of these resources
 exports.requireSignin = expressJwt({
     secret: process.env.JWT_SECRET,
     userProperty: "auth"
 });
+
+// User must be same user to access resource
+exports.isAuth = (req, res, next) => {
+    let user = req.profile && req.auth && req.profile._id == req.auth._id
+    if (!user) {
+        return res.status(403).json({
+            error: "Access denied."
+        });
+    }
+    next();
+};
+
+exports.isAdmin = (req, res, next) => {
+    // 0 is normal user, 1 is admin
+    if (req.profile.role === 0) {
+        return res.status(403).json({
+            error: "Admin only resource. Access denied."
+        })
+    }
+    next();
+}
