@@ -10,8 +10,4 @@ router.post('/signin', signin);
 
 router.get('/signout', signout);
 
-router.get('/help', requireSignin, (req, res) => {
-    res.send("Protected route")
-});
-
 module.exports = router;
