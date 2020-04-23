@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const expressValidator = require('express-validator');
+const cors = require('cors');
 
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
@@ -25,12 +26,13 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(expressValidator());
+app.use(cors());
 // routes
 
 app.use('/api/users', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/', categoryRoutes);
-app.use('/api/product', productRoutes);
+app.use('/api/', productRoutes);
 
 
 const port = process.env.PORT || 8000;
