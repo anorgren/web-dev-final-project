@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 import Layout from "./Layout";
 import { getProducts } from "./apiCore";
+import Card from "./Card";
+
 
 const Home = () => {
     const [productsBySell, setProductsBySell] = useState([]);
@@ -34,10 +36,15 @@ const Home = () => {
     }, []);
 
     return (
-        <Layout title="Home Page" description="Node react ecommerce app">
-            {JSON.stringify(productsByArriv)}
-            <hr/>
-            {JSON.stringify(productsBySell)}
+        <Layout title="Home Page" description="Node react ecommerce app" className={'container-fluid'}>
+            <h3 className='mb-4'>New Arrivals</h3>
+            <div className='row'>
+                {productsByArriv.map((product, index) => (<Card key={index} product={product}/>))}
+            </div>
+            <h3 className='mb-4'>Best Sellers</h3>
+            <div className='row'>
+                {productsBySell.map((product, index) => (<Card key={index} product={product}/>))}
+            </div>
         </Layout>
     )
 };
