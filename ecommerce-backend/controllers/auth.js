@@ -25,7 +25,7 @@ exports.signin = (req, res) => {
     Auth.findOne({email}, (err, user) => {
         if (err || !user) {
             return res.status(400).json({
-                error: 'Auth with specified email does not exist.'
+                error: 'Cannot log into account of provided email.'
             })
         }
         // authenticate user; email and password match
