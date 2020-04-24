@@ -117,7 +117,7 @@ const Card = ({
                     {renderDescription(product.description)}
                     <p className='black-10'>${product.price}</p>
                     <p className='black-9'>Category: {product.category && product.category.name}</p>
-                    <p className='black-8'>Added {moment(product.createdAt).fromNow}</p>
+                    <p className='black-8'>Added {moment(product.createdAt).fromNow()}</p>
                     <div className='text-center'>
                         {showView(showViewButton)}
                         {showAddToCart()}

@@ -225,37 +225,13 @@ exports.listBySearch = (req, res) => {
         });
 };
 
-// exports.listSearch = (req, res) => {
-//     const query = {};
-//     if (req.query.search) {
-//         query.name = {$regex: req.query.search, $options: 'i'};
-//         if(req.query.category && req.query.category !== 'All') {
-//             query.category = req.query.category;
-//         }
-//         Product.find(query, (err, products) => {
-//             if (err) {
-//                 return res.status(400).json({
-//                     error: errorHandler(err)
-//                 })
-//             }
-//             res.status(400).json(products)
-//         }).select('-photo')
-//     }
-// };
-
 exports.listSearch = (req, res) => {
-    // create query object to hold search value and category value
     const query = {};
-    // assign search value to query.name
-    console.log(req.query);
     if (req.query.search) {
         query.name = { $regex: req.query.search, $options: 'i' };
-        // assigne category value to query.category
         if (req.query.category && req.query.category != 'All') {
             query.category = req.query.category;
         }
-        // find the product based on query object with 2 properties
-        // search and category
         Product.find(query, (err, products) => {
             if (err) {
                 return res.status(400).json({
@@ -265,6 +241,25 @@ exports.listSearch = (req, res) => {
             res.json(products);
         }).select('-photo');
     }
+};
+
+exports.decreaseQuantity = (req, res, next) => {
+    let bulkUpdate = req.body.order.products.map((item) => {
+        return {
+            updateOne: {
+                filter: {_id: item._id},
+                update: {$inc: {quantity: -item.count, sold: +item.count}}
+            }
+        }
+    });
+    Product.bulkWrite(bulkUpdate, {}, (error, products) => {
+        if (error) {
+            return res.status(400).json({
+                error: 'Count not update product(s)'
+            });
+        }
+        next();
+    })
 };
 
 
