@@ -1,35 +1,54 @@
 import React, {useState, useEffect} from 'react';
-import {getCart} from "./cartHelpers";
+import {Link} from "react-router-dom";
+
+import { getCart } from "./cartHelpers";
 import Layout from "./Layout";
-import Search from "./Search";
 import Card from "./Card";
+import Checkout from "./Checkout";
 
 
 const Cart = () => {
-    const [items, setItems] = useState([])
+    const [items, setItems] = useState([]);
+    const [run, setRun] = useState(false);
 
     useEffect(() => {
         setItems(getCart)
-    }, [])
+    }, [run]);
+
+    const showItems = (items) => {
+        return (
+            <div>
+                <h4>Your cart has {`${items.length}`} items.</h4>
+                <hr/>
+                {items.map((product, index) =>
+                    (<Card key={index}
+                           product={product}
+                           showAddToCartButton={false}
+                           cartUpdate={true}
+                           showRemoveProductButton={true}
+                           setRun={setRun}
+                           run={run}
+                    />))}
+            </div>
+        )
+    };
+
+    const showEmptyCart= () => (
+        <div className='text-center'>
+            <h4>Your shopping cart is empty. <br/><Link to='/shop'>Continue Shopping</Link></h4>
+        </div>
+    );
 
     return (
-        <Layout title="Home Page" description="Node react ecommerce app" className={'container-fluid'}>
-            <Search/>
-            <h3 className='mb-4'>New Arrivals</h3>
+        <Layout title="Shopping Cart" description="Manage your cart items" className={'container-fluid'}>
             <div className='row'>
-                {productsByArriv.map((product, index) => (
-                    <div key={index} className='col-4 mb-3'>
-                        <Card product={product}/>
-                    </div>
-                ))}
-            </div>
-            <h3 className='mb-4'>Best Sellers</h3>
-            <div className='row'>
-                {productsBySell.map((product, index) => (
-                    <div key={index} className='col-4 mb-3'>
-                        <Card product={product}/>
-                    </div>
-                ))}
+                <div className='col-6'>
+                    {items.length > 0 ? showItems(items) : showEmptyCart()}
+                </div>
+                <div className='col-6'>
+                    <h4 className='mb-4'> Your Cart Summary:</h4>
+                    <Checkout products={items} run={run} setRun={setRun}/>
+                </div>
             </div>
         </Layout>
     )
