@@ -99,7 +99,7 @@ const Shop = () => {
     return (
         <Layout title="Shop" description="Search and find classes of your choice" className={'container-fluid'}>
             <div className='row'>
-                <div className='col-4'>
+                <div className='col-xs-8 col-sm-8 col-md-3'>
                     <h5>Category:</h5>
                     <ul>
                         <Checkbox categories={categories} handleFilters={filters => handleFilters(filters, 'category')}/>
@@ -109,15 +109,19 @@ const Shop = () => {
                         <RadioBox prices={prices} handleFilters={filters => handleFilters(filters, 'price')}/>
                     </div>
                 </div>
-                <div className='col-8'>
+                <div className='col-xs-0 col-sm-0 col-md-9'>
                     <h3 className='mb-4'>Products</h3>
                     <div className='row'>
                         {filteredResults.map((product, index) => (
-                            <Card key={index} product={product}/>
+                            <div key={index} className='col-4 mb-3'>
+                                <Card showViewButton={true} product={product}/>
+                            </div>
                         ))}
                     </div>
                     <hr/>
-                    {loadMoreButton()}
+                    <div className='text-center'>
+                        {loadMoreButton()}
+                    </div>
                 </div>
             </div>
         </Layout>

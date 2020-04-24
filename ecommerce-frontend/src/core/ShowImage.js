@@ -4,7 +4,7 @@ import { API } from "../config";
 
 
 const ShowImage = ({product, url}) => (
-    <div className="product-image">
+    <div className="text-center product-image">
         <img src={`${API}/${url}/photo/${product._id}`}
              alt={product.name}
              className="card-img-top mb-3"

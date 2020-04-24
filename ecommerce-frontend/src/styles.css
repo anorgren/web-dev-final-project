@@ -1,11 +1,19 @@
-.btn,
 .jumbotron,
 .nav:hover {
-    border-radius: 0px;
+    border-radius: 1px;
 }
 
 .product-image {
     min-height: 100px;
+}
+
+.cart-badge, cart-badge:hover {
+    border-radius: 100%;
+    padding: 2px;
+    font-size: 12px;
+    font-style: italic;
+    color: black;
+    background: white;
 }
 
 .card-img-top {
@@ -18,7 +26,7 @@
     width: 100vw;
     height: 20vh;
     color: #fff;
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background: linear-gradient(-45deg, navy, orange, navy, goldenrod);
     background-size: 400% 400%;
     -webkit-animation: Gradient 15s ease infinite;
     -moz-animation: Gradient 15s ease infinite;
@@ -27,6 +35,29 @@
 
 .jumbotron h2 {
     margin-top: -10px
+}
+
+.black-10 {
+    background: #f2f2f2;
+}
+.black-9 {
+    background: #e6e6e6;
+}
+.black-8 {
+    background: #d9d9d9;
+}
+.black-7 {
+    background: #cccccc;
+}
+.black-6 {
+    background: #bfbfbf;
+}
+
+
+.name {
+    background: navy;
+    color: white;
+    font-weight: bold;
 }
 
 @-webkit-keyframes Gradient {
