@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const { create, productById, read, remove, update, photo,
-    list, listRelated, listCategories, listBySearch} = require('../controllers/product');
+    list, listRelated, listCategories, listBySearch, listSearch} = require('../controllers/product');
 const { requireSignin, isAuth, isAdmin } = require('../controllers/auth');
 const { userById } = require('../controllers/user');
 
@@ -15,6 +15,7 @@ router.get('/products/categories', listCategories);
 
 router.post('/product/create/:userId', requireSignin, isAuth, isAdmin, create);
 router.post("/products/by/search", listBySearch);
+router.post('/products/search', listSearch);
 
 router.delete('/product/:productId/:userId',isAdmin, requireSignin, isAuth, remove);
 
