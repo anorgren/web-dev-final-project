@@ -2,11 +2,15 @@ const Auth = require('../models/user');
 const braintree = require('braintree');
 require('dotenv').config();
 
+const BRAINTREE_MERCHANT_ID="mcsfygqrzswqtzzr";
+const BRAINTREE_PUBLIC_KEY="ccm4ntjj82tm4tjk";
+const BRAINTREE_PRIVATE_KEY="b0ebdddcd082f9c246057b3bad8e84ac";
+
 const gateway = braintree.connect({
     environment: braintree.Environment.Sandbox,
-    publicKey: process.env.BRAINTREE_PUBLIC_KEY,
-    privateKey: process.env.BRAINTREE_PRIVATE_KEY,
-    merchantId: process.env.BRAINTREE_MERCHANT_ID
+    publicKey: BRAINTREE_PUBLIC_KEY,
+    privateKey: BRAINTREE_PRIVATE_KEY,
+    merchantId: BRAINTREE_MERCHANT_ID
 });
 
 exports.generateToken = (req, res) => {

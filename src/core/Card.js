@@ -46,9 +46,9 @@ const Card = ({
         })
     };
 
-    const showAddToCart = () => {
+    const showAddToCart = (quantity) => {
         return (
-            showAddToCartButton && (
+            showAddToCartButton && quantity > 0 && (
                 <button onClick={addToCart} className='btn btn-warning mt-2 mb-2 ml'>
                     Add to Cart
                 </button>))
@@ -123,7 +123,7 @@ const Card = ({
                     <div className='text-center'>
                         {showCartUpdateOptions(cartUpdate)}
                         {showView(showViewButton)}
-                        {showAddToCart()}
+                        {showAddToCart(product.quantity)}
                         {showRemoveButton(showRemoveProductButton)}
                     </div>
                 </div>
