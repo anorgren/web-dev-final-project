@@ -22,7 +22,7 @@ const AddProduct = () => {
     });
 
     const {user, token} = isAuthenticated();
-    const { name, description, price, categories, category, quantity,
+    const { name, description, price, categories, category, quantity, shipping,
         loading, error, createdProduct, formData } = values;
 
     const init = () => {
@@ -89,7 +89,7 @@ const AddProduct = () => {
             </div>
             <div className='form-group'>
                 <label className='text-muted'>Shipping</label>
-                <select className='form-control' value={category} onChange={handleChange('shipping')}>
+                <select className='form-control' value={shipping} onChange={handleChange('shipping')}>
                     <option>Is Shippable?</option>
                     <option value='1'>Yes</option>
                     <option value='0'>No</option>
@@ -97,11 +97,11 @@ const AddProduct = () => {
             </div>
             <label className='text-muted'>Image</label>
             <div className='form-group'>
-                <label className='btn btn-secondary'>
+                <label className='btn btn-warning'>
                     <input type='file' name='photo' accept='image/*' onChange={handleChange('photo')}/>
                 </label>
             </div>
-            <button className='btn btn-outline-primary'>Create Product</button>
+            <button className='btn btn-primary'>Create Product</button>
         </form>
     );
 
