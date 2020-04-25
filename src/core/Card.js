@@ -12,14 +12,14 @@ const Card = ({
                   cartUpdate=false,
                   showRemoveProductButton=false,
                   setRun=f=>f,
-                  run=undefined
+                  run=undefined, isProduct=false
 }) => {
     const [redirect, setRedirect] = useState(false);
     const [count, setCount] = useState(product.count);
 
 
     const renderDescription = (description) => {
-        if (description.length > 45) {
+        if (description.length > 45 && !isProduct) {
             return (
                 <p className="lead text-center mt-2">{description.substring(0,44) + "..."}</p>
             )
@@ -105,15 +105,6 @@ const Card = ({
                 </div>
             )
         );
-    };
-
-    const renderCartButtons = () => {
-        return (
-            <div className={'row'}>
-                {showView(showViewButton)}
-                {showRemoveButton(showRemoveProductButton)}
-            </div>
-        )
     };
 
     return (

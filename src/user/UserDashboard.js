@@ -13,7 +13,6 @@ const Dashboard = () => {
     const [history, setHistory] = useState([]);
 
     const init = (userId, token) => {
-        console.log(userId, token);
         getPurchaseHistory(userId, token).then( data => {
             if (data.error) {
                 console.log(data.error)

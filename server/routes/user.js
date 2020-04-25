@@ -16,7 +16,6 @@ router.get('/orders/by/user/:userId', requireSignin, isAuth, purchaseHistory);
 
 router.put('/:userId', requireSignin, isAuth, update);
 
-
 router.param('userId', userById);
 
 module.exports = router;

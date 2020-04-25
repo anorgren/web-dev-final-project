@@ -39,7 +39,8 @@ const Product = (props) => {
             <div className='row ml-3 mr-3'>
                 <div className='col-xs-16 col-sm-16 col-md-8'>
                     <h3 className='mb-2 mt-3'>{product.name}</h3>
-                    {product && product.description && <Card product={product} showViewButton={false}/>}
+                    {product && product.description && <Card product={product} isProduct={true}
+                                                             showViewButton={false}/>}
                 </div>
                 <div className='col-xs-16 col-sm-16 col-md-4'>
                     <h3 className='mb-2 mt-3'>Related Products:</h3>

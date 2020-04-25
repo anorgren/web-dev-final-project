@@ -16,13 +16,6 @@ const braintreeRoutes = require('./routes/braintree');
 const orderRoutes = require('./routes/order');
 
 
-// const MONGO_URI="mongodb://localhost/ecommerce";
-// const JWT_SECRET="default";
-// const BRAINTREE_MERCHANT_ID="mcsfygqrzswqtzzr";
-// const BRAINTREE_PUBLIC_KEY="ccm4ntjj82tm4tjk";
-// const BRAINTREE_PRIVATE_KEY="b0ebdddcd082f9c246057b3bad8e84ac";
-
-
 // create app
 const app = express();
 const PORT = process.env.PORT || 8000;

@@ -101,7 +101,7 @@ const Orders = () => {
                 <tbody>
                 {orders.map((order, index) => (
                     <tr>
-                            <th scope='row'>{order.transaction_id}</th>
+                            <th scope='row'>{order.transactionId}</th>
                             <td scope='row'>{showStatus(order)}</td>
                             <td scope='row'>{moment(order.createdAt).calendar()}</td>
                             <td scope='row'>{order.user.name}</td>
