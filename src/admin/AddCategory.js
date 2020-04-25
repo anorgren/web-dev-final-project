@@ -42,7 +42,7 @@ const AddCategory = () => {
 
     const showError = () => {
         if (error) {
-            return <h4 className='text-danger'>Cannot create {name}. Category name must be unique</h4>
+            return <h4 className='text-danger'>Cannot create category: {name}. Category name must be unique</h4>
         }
     };
 
