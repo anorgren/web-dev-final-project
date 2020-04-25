@@ -19,9 +19,9 @@ const Card = ({
 
 
     const renderDescription = (description) => {
-        if (description.length > 100) {
+        if (description.length > 45) {
             return (
-                <p className="lead text-center mt-2">{description.substring(0,100) + "..."}</p>
+                <p className="lead text-center mt-2">{description.substring(0,44) + "..."}</p>
             )
         } else {
             return <p className="text-center lead mt-2">{description}</p>
