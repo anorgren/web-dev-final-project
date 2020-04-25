@@ -44,7 +44,7 @@ const Menu = ({history}) => (
                 </Link>
             </Fragment>
         )}
-        {isAuthenticated() &&(
+        {isAuthenticated() && (
             <Fragment>
                 <li className='nav-item ml-auto'>
                         <span className="nav-link"

@@ -36,6 +36,7 @@ const AddCategory = () => {
 
     const showSuccess = () => {
         if (success) {
+            setName('');
             return <h4 className='text-success'>Category {name} created</h4>
         }
     };
@@ -47,7 +48,7 @@ const AddCategory = () => {
     };
 
     const goBack = () => (
-        <div className='mt-5'>
+        <div className='mt-2'>
             <Link to='/admin/dashboard' className='text-warning'>Back to Dashboard</Link>
         </div>
     );
@@ -58,7 +59,7 @@ const AddCategory = () => {
                 <label className='text-muted'>Category Name</label>
                 <input type='text' onChange={handleChange} className='form-control' value={name} autoFocus/>
             </div>
-            <button className='btn btn-outline-primary'>Create Category</button>
+            <button className='btn btn-primary'>Create Category</button>
             {goBack()}
         </form>
     );
