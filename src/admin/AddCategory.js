@@ -36,9 +36,7 @@ const AddCategory = () => {
 
     const showSuccess = () => {
         if (success) {
-            let tempName = name;
-            setName('');
-            return <h4 className='text-success'>Category {tempName} created</h4>
+            return <h4 className='text-success'>Category--{name}--created</h4>
         }
     };
 
